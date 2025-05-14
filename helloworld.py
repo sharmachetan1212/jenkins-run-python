@@ -4,26 +4,28 @@ import grp
 
 def list_users():
     users = [user.pw_name for user in pwd.getpwall()]
-    print("\nUsers:")
-    for user in users:
-        print(user)
+    return "\nUsers:\n" + "\n".join(users)
 
 def list_groups():
     groups = [group.gr_name for group in grp.getgrall()]
-    print("\nGroups:")
-    for group in groups:
-        print(group)
+    return "\nGroups:\n" + "\n".join(groups)
 
 def list_filesystem():
-    print("\nFile System Structure:")
+    output = "\nFile System Structure:\n"
     for root, dirs, files in os.walk("/"):
-        print(f"{root}/")
+        output += f"{root}/\n"
         for dir in dirs:
-            print(f"  [DIR] {dir}")
+            output += f"  [DIR] {dir}\n"
         for file in files:
-            print(f"  [FILE] {file}")
+            output += f"  [FILE] {file}\n"
+    return output
+
+def save_to_file(filename="system_info.txt"):
+    with open(filename, "w") as f:
+        f.write(list_users() + "\n")
+        f.write(list_groups() + "\n")
+        f.write(list_filesystem() + "\n")
+    print(f"Output saved to {filename}")
 
 if __name__ == "__main__":
-    list_users()
-    list_groups()
-    list_filesystem()
+    save_to_file()
