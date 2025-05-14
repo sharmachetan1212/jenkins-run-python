@@ -16,6 +16,15 @@ FROM jenkins/jenkins:2.452.1-jdk11
 # Switch to root to install packages and plugins
 USER root
 
+# Match the GID of docker.sock (replace 999 with your actual docker group GID)
+RUN groupadd -g 999 docker && usermod -aG docker jenkins
+
+# Install Docker CLI
+RUN apt-get update && apt-get install -y docker.io
+
+# Install Jenkins plugins
+RUN jenkins-plugin-cli --plugins blueocean docker-workflow
+
 # Install required tools
 RUN apt-get update && apt-get install -y \
     lsb-release \
