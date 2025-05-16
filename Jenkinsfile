@@ -49,11 +49,8 @@ pipeline {
             steps {
                 echo "Building.."
                 sh '''
-                cd myapp
-                python3 -m venv venv              # create virtual environment
-                . venv/bin/activate               # activate the venv
-                pip install --upgrade pip         # optional but good
-                pip install -r requirements.txt   # install dependencies
+                source /var/jenkins_home/workspace/my-python-job/myapp/path/to/venv./bin/activate
+                pip install -r /var/jenkins_home/workspace/my-python-job/myapp/requirements.txt                                 # install dependencies
                 '''
             }
         }
@@ -62,10 +59,9 @@ pipeline {
             steps {
                 echo "Testing.."
                 sh '''
-                cd myapp
-                . venv/bin/activate               # activate the same venv
-                python3 hello.py
-                python3 hello.py --name="Chetan Sharma"
+                source /var/jenkins_home/workspace/my-python-job/myapp/path/to/venv./bin/activate              # activate the same venv
+                python3 /var/jenkins_home/workspace/my-python-job/helloworld.py
+                python3 /var/jenkins_home/workspace/my-python-job/helloworld.py --name="Chetan Sharma"
                 '''
             }
         }
