@@ -10,6 +10,8 @@ pipeline {
                 echo "Building.."
                 sh '''
                 cd myapp
+                pwd
+                ls -larth
                 pip install -r requirements.txt
                 '''
             }
