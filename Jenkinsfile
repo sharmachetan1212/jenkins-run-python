@@ -39,11 +39,8 @@
 // }
 
 pipeline {
-    agent { 
-        node {
-            label 'docker-agent-python'
-        }
-    }
+    agent any
+
     triggers {
         pollSCM('* * * * *')  // Polls SCM every minute
     }
