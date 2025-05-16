@@ -49,7 +49,7 @@ pipeline {
             steps {
                 echo "Building.."
                 sh '''
-                source /var/jenkins_home/workspace/my-python-job/myapp/path/to/venv./bin/activate
+                . /var/jenkins_home/workspace/my-python-job/myapp/path/to/venv./bin/activate
                 pip install -r /var/jenkins_home/workspace/my-python-job/myapp/requirements.txt                                 # install dependencies
                 '''
             }
@@ -59,7 +59,7 @@ pipeline {
             steps {
                 echo "Testing.."
                 sh '''
-                source /var/jenkins_home/workspace/my-python-job/myapp/path/to/venv./bin/activate              # activate the same venv
+                . /var/jenkins_home/workspace/my-python-job/myapp/path/to/venv./bin/activate              # activate the same venv
                 python3 /var/jenkins_home/workspace/my-python-job/helloworld.py
                 python3 /var/jenkins_home/workspace/my-python-job/helloworld.py --name="Chetan Sharma"
                 '''
