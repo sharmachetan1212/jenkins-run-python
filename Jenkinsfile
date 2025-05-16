@@ -1,54 +1,14 @@
-// pipeline {
-//     agent { 
-//         node {
-//             label 'docker-agent-python'
-//             }
-//       }
-//     triggers {
-//         pollSCM '* * * * *'
-//     }
-//     stages {
-//         stage('Build') {
-//             steps {
-//                 echo "Building.."
-//                 sh '''
-//                 cd myapp
-//                 pip install -r requirements.txt
-//                 '''
-//             }
-//         }
-//         stage('Test') {
-//             steps {
-//                 echo "Testing.."
-//                 sh '''
-//                 cd myapp
-//                 python3 hello.py
-//                 python3 hello.py --name=Brad
-//                 '''
-//             }
-//         }
-//         stage('Deliver') {
-//             steps {
-//                 echo 'Deliver....'
-//                 sh '''
-//                 echo "doing delivery stuff.."
-//                 '''
-//             }
-//         }
-//     }
-// }
-
 pipeline {
     agent any
 
     triggers {
-        pollSCM('* * * * *')  // Polls SCM every minute
+        pollSCM '* * * * *'
     }
     stages {
         stage('Build') {
             steps {
                 echo "Building.."
-                bat '''
+                sh '''
                 cd myapp
                 pip install -r requirements.txt
                 '''
@@ -57,18 +17,18 @@ pipeline {
         stage('Test') {
             steps {
                 echo "Testing.."
-                bat '''
+                sh '''
                 cd myapp
-                python hello.py
-                python hello.py --name=Brad
+                python3 hello.py
+                python3 hello.py --name=Brad
                 '''
             }
         }
         stage('Deliver') {
             steps {
                 echo 'Deliver....'
-                bat '''
-                echo Doing delivery stuff...
+                sh '''
+                echo "doing delivery stuff.."
                 '''
             }
         }
