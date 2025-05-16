@@ -1,67 +1,67 @@
-// pipeline {
-//     agent { 
-//         node {
-//             label 'jenkins-agent-goes-here'
-//             }
-//       }
-//     stages {
-//         stage('Build') {
-//             steps {
-//                 echo "Building.."
-//                 sh '''
-//                 echo "doing build stuff.."
-//                 '''
-//             }
-//         }
-//         stage('Test') {
-//             steps {
-//                 echo "Testing.."
-//                 sh '''
-//                 echo "doing test stuff..
-//                 '''
-//             }
-//         }
-//         stage('Deliver') {
-//             steps {
-//                 echo 'Deliver....'
-//                 sh '''
-//                 echo "doing delivery stuff.."
-//                 '''
-//             }
-//         }
-//     }
-// }
-
 pipeline {
     agent { 
         node {
             label 'jenkins-agent-goes-here'
-        }
-    }
+            }
+      }
     stages {
         stage('Build') {
             steps {
                 echo "Building.."
-                bat '''
-                echo Doing build stuff...
+                sh '''
+                echo "doing build stuff.."
                 '''
             }
         }
         stage('Test') {
             steps {
                 echo "Testing.."
-                bat '''
-                echo Doing test stuff...
+                sh '''
+                echo "doing test stuff..
                 '''
             }
         }
         stage('Deliver') {
             steps {
                 echo 'Deliver....'
-                bat '''
-                echo Doing delivery stuff...
+                sh '''
+                echo "doing delivery stuff.."
                 '''
             }
         }
     }
 }
+
+// pipeline {
+//     agent { 
+//         node {
+//             label 'jenkins-agent-goes-here'
+//         }
+//     }
+//     stages {
+//         stage('Build') {
+//             steps {
+//                 echo "Building.."
+//                 bat '''
+//                 echo Doing build stuff...
+//                 '''
+//             }
+//         }
+//         stage('Test') {
+//             steps {
+//                 echo "Testing.."
+//                 bat '''
+//                 echo Doing test stuff...
+//                 '''
+//             }
+//         }
+//         stage('Deliver') {
+//             steps {
+//                 echo 'Deliver....'
+//                 bat '''
+//                 echo Doing delivery stuff...
+//                 '''
+//             }
+//         }
+//     }
+// }
