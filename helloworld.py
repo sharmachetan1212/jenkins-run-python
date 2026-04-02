@@ -15,6 +15,7 @@ def save_to_file(filename="system_info.txt"):
         f.write(list_users() + "\n")
         f.write(list_groups() + "\n")
     print(f"Output saved to {filename}")
+    print(f"TEST")
 
 if __name__ == "__main__":
     save_to_file()
